@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>дан код</title>
+	<script>
+		var a = 1, b = 1, c, d;
+		c = ++a; alert(c);      // 2    Действия: a = a + 1, c = 1 + a   Итог: c = 2, (a = 2)
+		d = b++; alert(d);      // 1    Действия: d = b, b = b + 1       Итог: d = 1, (b = 2)
+		c = (2+ ++a); alert(c); // 5    Действия: с = 2 + (a + 1)        Итог: c = 5, (a = 3)
+		d = (2+ b++); alert(d); // 4    Действия: d = (2 + b), b = b + 1 Итог: d = 4, (b = 3)
+		alert(a);               // 3    Исходя из 11 строчки кода, a = 3
+		alert(b);               // 3    Исходя из 12 строчки кода, b = 3
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
