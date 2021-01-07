@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<script>
+		//пробный массив
+		let products = [
+			{name: "смартфон", price: 30000},
+			{name: "ноутбук", price: 50000},
+			{name: "телевизор", price: 70000}
+		];
+		//функция для сложения цен
+		let countBasketPrice = array => array.reduce((sum, n) => sum += n.price, 0);
+
+		//вывод результата
+		console.log (countBasketPrice (products));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
