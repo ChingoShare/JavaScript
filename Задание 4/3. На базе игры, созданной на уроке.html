@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<script>
+		const arrayInfo = [
+			//Правильные варианты помечены двойным пробелом
+
+			{
+				question: "В каком году началась Первая мировая война?",
+				variants: ["1941", "1898", "1914  ", "1917"],
+				price: 500,
+			},
+			{
+				question: "Сколько будет 2+2*2?",
+				variants: ["4", "16", "8", "6  "],
+				price: 1000,
+			},
+			{
+				question: "Кто был президентом СССР?",
+				variants: ["Брежнев", "Горбачёв  ", "Ельцин", "Хрущёв"],
+				price: 2000,
+			},
+			{
+				question: "Какой город является столицей Египта?",
+				variants: ["Мемфис", "Каир  ", "Стокгольм", "Вавилон"],
+				price: 3000,
+			},
+			{
+				question: "В какой игре не используют мяч?",
+				variants: ["Биатлон  ", "Футбол", "Крикет", "Гольф"],
+				price: 5000,
+			},
+			{
+				question: "Кто президент Украины?",
+				variants: ["Порошенко", "Лукашенко", "Путин", "Зеленский  "],
+				price: 10000,
+			},
+			{
+				question: "Какой паук самый большой в мире?",
+				variants: ["Каракурт", "Каменщик", "Птицеед  ", "Тарантул"],
+				price: 15000,
+			},
+			{
+				question: "Что находиться между Марсом и Юпитером?",
+				variants: ["Пояс Койпера", "Сатурн", "Облако Оорта", "Пояс Астероидов  "],
+				price: 25000,
+			},
+			{
+				question: "Какой бог не относиться к египетской Мифологии?",
+				variants: ["Гор", "Гермес  ", "Осирис", "Анубис"],
+				price: 50000,
+			},
+			{
+				question: "Сколько литро в кубическом метре?",
+				variants: ["1", "10", "100", "1000  "],
+				price: 100000,
+			},
+			{
+				question: "Какой океан самый глубокий?",
+				variants: ["Тихий  ", "Атлантитческий", "Индийский", "Северный Ледовитый"],
+				price: 200000,
+			},
+			{
+				question: "Какой князь ввёл Крещение Руси",
+				variants: ["Владимир Мономах", "Князь Святослав", "Князь Игорь", "Владимир Красно Солнышко  "],
+				price: 400000,
+			},
+			{
+				question: "Какой цвет не является оттенком синего?",
+				variants: ["Сизый", "Лазурный", "Фукси  ", "Ниагара"],
+				price: 800000,
+			},
+			{
+				question: "Какой химический символ у серебра?",
+				variants: ["Fe", "Ag  ", "Sn", "Pb"],
+				price: 1500000,
+			},
+			{
+				question: "Как звали отца Тора",
+				variants: ["Один  ", "Два", "Три", "Четыре"],
+				price: 3000000,
+			},
+		];
+
+
+		let listConstSum = "";
+		for (let i = arrayInfo.length; i > 0; i--) {
+			listConstSum += `${i}. ${arrayInfo[i - 1].price}\n`;
+		}
+
+		let constSum = prompt("Введите несгораемую сумму:\n" + listConstSum);
+
+		if (constSum <= arrayInfo.length) {
+			constSum = arrayInfo[constSum - 1].price;
+		}
+
+
+		let n = 0; // индекс объекта в массиве arrayInfo
+		let sum = 0; // сумма выигрыша
+
+		//Объект с функцией для игры
+		const game = {
+			start() {
+
+				let options = "";
+				let trueAnswer;
+				const letters = ["A", "B", "C", "D"];
+				for (let i = 0; i < arrayInfo[n].variants.length; i++) {
+					if (arrayInfo[n].variants[i].includes("  ")) {
+						trueAnswer = letters[i] + "  ";
+						trueAnswer2 = arrayInfo[n].variants[i];
+					}
+					options += `${letters[i]}. ${arrayInfo[n].variants[i]}\n`;
+				}
+
+				let answer = prompt(`Вы выиграли ${sum} рублей! \n\n${n + 1}-й вопрос на ${arrayInfo[n].price} рублей: \n\n${arrayInfo[n].question}\n\n${options}\nЕсли вы хотите забрать деньги, введите "забрать"`);
+				answer += "  ";
+				if (answer.toUpperCase() == "забрать  ".toUpperCase()) {
+					if (n == 0) {
+						alert(`Ваш выигрыш составил ${0} рублей!`);
+					} else {
+						alert(`Ваш выигрыш составил ${arrayInfo[n - 1].price} рублей!`);
+					}
+					n = false;
+					game.start();
+				}
+				if (answer.toUpperCase() == trueAnswer || answer.toUpperCase() == trueAnswer2.toUpperCase()) {
+					if (n == arrayInfo.length - 1) {
+						alert(`Поздравляем вы стали победителем программы, Кто Хочет Стать Миллионером. Вы выиграли ${arrayInfo[n].price}!`);
+					}
+					sum = arrayInfo[n].price;
+					n++;
+					game.start();
+				}
+				else {
+					if (arrayInfo[n].price > constSum) {
+						alert(`И это неправильный ответ! С учётом несгораемой суммы, ваш выигрыш составил ${constSum} рублей!`);
+					} else {
+						alert("И это неправильный ответ! Ваш выигрыш составил 0 рублей!");
+					}
+				}
+
+			}
+
+		}
+		game.start()
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

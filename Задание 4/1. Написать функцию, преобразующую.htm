@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<script>
+		function numberInObject(n) {
+			n = parseInt(n);
+
+			if (isNaN(n)) {
+				console.log('Параметр должен быть числом');
+				return {};
+			}
+
+			if (n >= 1000 || n <= 0) {
+				console.log(`Число ${n} не входит в диапазон от 0 до 999`);
+				return {};
+			}
+
+			const inputArr = n.toString().split("");
+			return {
+				'единицы': parseInt(inputArr[2]),
+				'десятки': parseInt(inputArr[1]),
+				'сотни': parseInt(inputArr[0])
+			}
+		}
+
+		console.log(numberInObject(108)) //{единицы: 8, десятки: 0, сотни: 1}
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
