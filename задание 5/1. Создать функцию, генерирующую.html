@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+		article {
+			display: grid;
+			width: fit-content;
+			grid-template-columns: repeat(8, auto);
+			box-shadow: 4px 4px 8px black;
+		}
+		.letters {
+			box-shadow: none;
+			width: 100%;
+			justify-content: center;
+			grid-template-columns: repeat(9, auto);
+
+		}
+		.numbers {
+			box-shadow: none;
+			grid-template-columns: auto;
+		}
+		.numbers section, .letters section {
+			outline: none;
+			text-shadow: 1px 1px 2px white,
+			0px 0px 10px white, 0px 0px 10px black;
+		}
+		section {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50px;
+			height: 50px;
+			font-weight: bolder;
+			font-size: 2em;
+			outline: solid 1px black;
+		}
+		.white {
+			background-color: white;
+			color: black;
+		}
+		.black {
+			background-color: black;
+			color: white;
+		}
+		.white-figures {
+			color: white;
+			text-shadow: 1px 1px 2px black,
+			0px 0px 10px black, 0px 0px 10px white;
+		}
+		.black-figures {
+			color: black;
+			text-shadow: 1px 1px 2px white,
+			0px 0px 10px white, 0px 0px 10px black;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		//буквы
+		let article2 = document.createElement("article");
+		article2.classList.add("letters");
+
+		arrayLetters = ["","A", "B", "C", "D", "E", "F", "G", "H"]
+		for (let i = 0; i < arrayLetters.length; i++) {
+			let section = document.createElement("section");
+			section.innerHTML = arrayLetters[i];
+			article2.appendChild(section);
+		}
+		//цифры
+		let article1 = document.createElement("article");
+		article1.classList.add("numbers");
+		for (let i = 8; i > 0; i--) {
+			let section = document.createElement("section");
+			section.innerHTML = i;
+			article1.appendChild(section);
+		}
+		//доска
+		let article = document.createElement("article");
+		n = 1;
+		for (let i = 0; i < 64; i++) {
+			if (i % 8 == 0) {
+				n++;
+				n = n % 2 == 0 ? n = 0 : n = 1;
+			}
+			let section = document.createElement("section");
+			if (i < 16) {
+				section.classList.add("black-figures");
+			}
+			if (i > 47) {
+				section.classList.add("white-figures");
+			}
+			if (i % 2 == n) {
+				section.classList.add("white");
+			} else {
+				section.classList.add("black");
+			}
+			let figure = i == 0 ? document.createTextNode("♜") : i == 1 ? document.createTextNode("♞") : i == 2 ? document.createTextNode("♝") : i == 3 ? document.createTextNode("♚") : i == 4 ? document.createTextNode("♛") : i == 5 ? document.createTextNode("♝") : i == 6 ? document.createTextNode("♞") : i == 7 ? document.createTextNode("♜"): i == 56 ? document.createTextNode("♜") : i == 57 ? document.createTextNode("♞") : i == 58 ? document.createTextNode("♝") : i == 59 ? document.createTextNode("♚") : i == 60 ? document.createTextNode("♛") : i == 61 ? document.createTextNode("♝") : i == 62 ? document.createTextNode("♞") : i == 63 ? document.createTextNode("♜") : i < 16 ? document.createTextNode("♟") : i > 47 ? document.createTextNode("♟")
+			: document.createTextNode("");
+			section.appendChild(figure);
+			article.appendChild(section);
+		}
+		document.body.appendChild(article1);
+		document.body.appendChild(article);
+		document.body.appendChild(article2);
+	</script>
+</body>
+
+</html>
