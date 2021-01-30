@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Товары и корзина</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<header>
+		<p>Мир технологий</p>
+	</header>
+	<main>
+		<article class="products">
+			<h2>Товары</h2>
+			<section>
+				<img src="img/iphone.png" alt="iphone">
+				<div>
+					<h3>Apple iPhone 11 Pro Max</h3>
+					<p class="after">131500</p>
+					<button onclick="addCart(this)">Купить</button>
+				</div>
+			</section>
+			<section>
+				<img src="img/samsung.png" alt="samsung">
+				<div>
+					<h3>Samsung Galaxy S20 Ultra</h3>
+					<p class="after">101200</p>
+					<button onclick="addCart(this)">Купить</button>
+				</div>
+			</section>
+		</article>
+		<article class="cart">
+			<h2>Корзина</h2>
+			<h3>Всего товаров: <span class="count">0</span> | Общая стоимость: <span class="sum-price after">0</span>
+			</h3>
+		</article>
+	</main>
+	<footer>
+		<p>2021 &copy; Мир технологий | Все права защищены</p>
+	</footer>
+	
+</body>
+
+</html>
